@@ -15,6 +15,4 @@ async function generateMockUsers(number) {
   return users;
 }
 
-module.exports = {
-  generateMockUsers,
-};
+module.exports = { generateMockUsers };
