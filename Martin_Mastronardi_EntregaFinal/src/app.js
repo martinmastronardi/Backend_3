@@ -13,6 +13,7 @@ import sessionsRouter from './routes/sessions.router.js';
 import { addLogger, logger } from './utils/logger.js';
 import __dirname from './utils/index.js';
 
+
 const app = express();
 const PORT = process.env.PORT || 8080;
 
@@ -45,3 +46,4 @@ app.use('/api/adoptions',adoptionsRouter);
 app.use('/api/sessions',sessionsRouter);
 
 app.listen(PORT,()=>console.log(`Listening on ${PORT}`))
+export default app

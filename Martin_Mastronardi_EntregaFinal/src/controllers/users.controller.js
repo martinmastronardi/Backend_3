@@ -33,10 +33,25 @@ const deleteUser = async (req, res) => {
     res.send({ status: "success", message: "User deleted" });
 };
 
+const createUser = async (req, res) => {
+    try {
+        const { first_name, last_name, email, password, role } = req.body;
+        if (!first_name || !last_name || !email || !password || !role) {
+            return res.status(400).send({ status: 'error', error: 'Missing fields' });
+        }
+
+        const newUser = await usersService.create({ first_name, last_name, email, password, role });
+        res.status(201).send({ status: 'success', payload: newUser });
+    } catch (error) {
+        res.status(500).send({ status: 'error', error: error.message });
+    }
+};
+
 
 export default {
     deleteUser,
     getAllUsers,
     getUser,
-    updateUser
+    updateUser,
+    createUser
 }
