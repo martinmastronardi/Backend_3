@@ -16,7 +16,7 @@ describe('Adoption Endpoints', () => {
 
     describe('GET /adoptions/:aid', () => {
         it('Debe devolver una adopción específica por ID', async () => {
-            const mockAdoptionId = '123456789abcdef123456789'; // Usa un ID válido de tu base de datos.
+            const mockAdoptionId = '123456789abcdef123456789';
             const { statusCode, body } = await requester.get(`/adoptions/${mockAdoptionId}`);
 
             expect(statusCode).to.eql(200);
@@ -36,8 +36,8 @@ describe('Adoption Endpoints', () => {
 
     describe('POST /adoptions/:uid/:pid', () => {
         it('Debe crear una nueva adopción', async () => {
-            const mockUserId = '123456789abcdef123456789'; // Usa un ID válido de usuario.
-            const mockPetId = 'abcdef123456789abcdef123'; // Usa un ID válido de mascota.
+            const mockUserId = '675cd5b96a539e196c0eabd0'; 
+            const mockPetId = '675ce0cd3e28111a0f1bc788'; 
 
             const { statusCode, body } = await requester.post(`/adoptions/${mockUserId}/${mockPetId}`);
 
@@ -58,7 +58,7 @@ describe('Adoption Endpoints', () => {
         });
 
         it('Debe devolver un error 404 si la mascota no existe', async () => {
-            const mockUserId = '123456789abcdef123456789';
+            const mockUserId = '1234';
             const invalidPetId = 'invalidPetId';
 
             const { statusCode, body } = await requester.post(`/adoptions/${mockUserId}/${invalidPetId}`);
@@ -70,7 +70,7 @@ describe('Adoption Endpoints', () => {
 
         it('Debe devolver un error 400 si la mascota ya está adoptada', async () => {
             const mockUserId = '123456789abcdef123456789';
-            const adoptedPetId = 'adoptedPetId'; // Usa un ID de mascota ya adoptada.
+            const adoptedPetId = '675ce0b03e28111a0f1bc786'; 
 
             const { statusCode, body } = await requester.post(`/adoptions/${mockUserId}/${adoptedPetId}`);
 

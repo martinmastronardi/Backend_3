@@ -16,7 +16,7 @@ describe('Pets Router Tests', () => {
 
     describe('GET /api/pets/:pid', () => {
         it('Debería obtener una mascota por ID', async () => {
-            const mockPetId = '675ce0e73e28111a0f1bc78a'; 
+            const mockPetId = '675ce0cd3e28111a0f1bc788'; 
 
             const { statusCode, body } = await requester.get(`/api/pets/${mockPetId}`);
             
